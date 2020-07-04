@@ -1,1 +1,1 @@
-Thank you for downloading my template
+Thank you for downloading
