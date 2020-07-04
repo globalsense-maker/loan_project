@@ -3,7 +3,7 @@
 <head>
 <meta charset=utf-8 />
 <title>Loan Calculator </title>
-<link rel="stylesheet" href="css/loancalculator.css">
+<link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
@@ -29,8 +29,17 @@
                 <option value="50000">50000</option>
                 </select>
             </div>
-
-            
+            <div class="form-group">
+                <p> <font color="red"><b>REPAYMENT DURATION Weekly</b></a> </p>
+                <select type="text" class="form-input" name="repymnt_duration" value="" onFocus="startCalc();" onBlur="stopCalc();" placeholder="loan amount">
+                <option value="None">Select</option>
+                <option value="4">4 weeks</option>
+                <option value="6">6 weeks</option>
+                <option value="8">8 weeks</option>
+                <option value="10">10 weeks</option>
+                <option value="12">12 weeks</option>
+                </select>
+                </div>           
 
 
 
@@ -42,20 +51,16 @@
                 <input type="text" class="form-input" name="showresult" onFocus="startCalc();" onBlur="stopCalc();" placeholder="Interest" >
             
                 <div class="form-group">
-            <p> <font color="black"><b>TOTAL AMOUNT</b></a> </p>
-                <input type="text" class="form-input" name="total_amt" >
+                <p> <font color="black"><b>TOTAL AMOUNT</b></a> </p>
+                <input type="text" class="form-input" name="total_amt" onFocus="startCalc();" onBlur="stopCalc();" placeholder="Total Amount" >
+                </div>
             
+                
+
                 <div class="form-group">
-                <p> <font color="red"><b>REPAYMENT DURATION Weekly</b></a> </p>
-                <select type="text" class="form-input" name="repymnt_duration" value="" onFocus="startCalc();" onBlur="stopCalc();" placeholder="loan amount">
-                <option value="None">Select</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="10">10</option>
-                </select>
-            </div>
+                <p> <font color="black"><b>Your weekly Payment is</b></a> </p>
+                <input type="text" class="form-input" name="weekly_pay">
+                </div>
             
 </form>
       
@@ -81,12 +86,22 @@
         
            }else (one==20000)
                document.autoSumForm.showresult.value = ( one * 0.2);
-               
-           }
-
+             
            t_amt = document.autoSumForm.showresult.value;
            
-           document.autoSumForm.total_amt.value =  (one *0.4);
+           document.autoSumForm.total_amt.value =  (one*1) + (t_amt*1); 
+
+           ppp=document.autoSumForm.repymnt_duration.value;
+           tt_amt=document.autoSumForm.total_amt.value;
+           if ( ppp==4) {
+            document.autoSumForm.weekly_pay.value = ( tt_amt/ppp);
+        
+           }else (ppp==6)
+               document.autoSumForm.weekly_pay.value = ( tt_amt/ppp);
+           
+           //document.autoSumForm.weekly_pay.value = (tt_amt)/(ppp);
+           }
+
             
            function stopCalc(){
            clearInterval(interval);

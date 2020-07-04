@@ -1,4 +1,29 @@
+   
+  <?php
+  include_once 'db_connection.php';
+  if(isset($_POST['register']))
+  {    
+       $fullname = $_POST['fullname'];
+       $phone_no = $_POST['phone_no'];
+       $email = $_POST['email'];
+   
+       $sql = "INSERT INTO loan_reg (fullname,phone_no,email)
+       VALUES ('$fullname','$phone_no','$email')";
+   
+       if (mysqli_query($conn, $sql)) {
+          echo "Loan Application successfully ! ";
+        
+        
+       } else {
+          echo "Error: " . $sql . ":-" . mysqli_error($conn);
+       }
+       mysqli_close($conn);
+  }
+  ?>
+
+
 <!DOCTYPE html>
+
 <html lang="zxx">
 
 <head>
@@ -80,9 +105,9 @@
                 <div class="row">
                     <div class="col-lg-9">
                         <ul class="header__top__widget">
-                            <li><i class="fa fa-map-marker"></i> 96 Ernser Vista Suite 437, NY, US</li>
-                            <li><i class="fa fa-phone"></i> (123) 456-78-910</li>
-                            <li><i class="fa fa-envelope"></i> Info@colorlib.com</li>
+                            <li><i class="fa fa-map-marker"></i> 57, awolowo way ikeja lagos</li>
+                            <li><i class="fa fa-phone"></i> 07022334455</li>
+                            <li><i class="fa fa-envelope"></i> info@successgate.com.ng</li>
                         </ul>
                     </div>
                     <div class="col-lg-3">
@@ -92,7 +117,7 @@
                             <i class="fa fa-angle-down"></i>
                             <ul>
                                 <li><a href="#">English</a></li>
-                                <li><a href="#">Bangla</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -151,34 +176,28 @@
                 </div>
                 <div class="col-lg-5 offset-lg-2">
                     <div class="hero__form">
-                        <h3>How much do you need</h3>
-                        <form action="#">
+                        <h3>Register for a Loan Here</h3>
+
+                        <form action="loancal.php" method="post">
                             <div class="input-list">
                                 <div class="input-list-item">
-                                    <p>Amount of money ($):</p>
-                                    <input type="text">
+                                    <p>fullname:</p>
+                                    <input type="text" name="fullname">
                                 </div>
                                 <div class="input-list-item">
-                                    <p>How long for (day):</p>
-                                    <input type="text">
+                                    <p>phone_no</p>
+                                    <input type="text" name="phone_no">
                                 </div>
                             </div>
                             <div class="input-full-width">
-                                <p>Repayment:</p>
-                                <input type="text">
+                                <p>email</p>
+                                <input type="text" name="email">
                             </div>
-                            <div class="input-list last">
-                                <div class="input-list-item">
-                                    <p>Name:</p>
-                                    <input type="text">
-                                </div>
-                                <div class="input-list-item">
-                                    <p>Phone:</p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <button type="submit" class="site-btn">Get Your Loan Now!</button>
+                            
+                            <button type="submit" class="site-btn" name="register" value="loancal.php">Calculate and Get Your Loan Now!</button>
+                            
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -564,14 +583,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="contact__widget__item">
-                                <h4>New York Office</h4>
-                                <p>917 Atlantic Lane, Strongsville, NY, United State</p>
+                                <h4>Ikeja Lagos Nigeria</h4>
+                                <p>suleja Abuja, Nigeria</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="contact__widget__item">
-                                <h4>New Jersey Office</h4>
-                                <p>1 Walnut Court, East Orange, NJ, United State</p>
+                                <h4>lagos  Nigeria</h4>
+                                <p>10 toyin street Ikeja Lagos/p>
                             </div>
                         </div>
                     </div>
@@ -579,7 +598,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__widget__phone">
                         <span>Contact Us Now!</span>
-                        <h2>(+12) 345-678-910</h2>
+                        <h2>07031252662</h2>
                     </div>
                 </div>
             </div>
@@ -647,13 +666,7 @@
                             <li><a href="#">Community</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <div class="footer__copyright__text">
-                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-                        </div>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
+                    
                 </div>
             </div>
         </div>
